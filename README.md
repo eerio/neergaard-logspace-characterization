@@ -38,52 +38,55 @@ Standard ML of New Jersey v110.79 [built: Mon Apr 22 10:14:55 2024]
 ```
 
 The evaluator package consists of four evaluators which all adhere to
-the signature given in Evaluator-sig.sml.  That means that they
+the signature given in `Evaluator-sig.sml`.  That means that they
 contain the following functions:
-
-   eval_bc : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
-   eval_bcm : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
-   eval_bcmeps : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
+```
+eval_bc : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
+eval_bcm : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
+eval_bcmeps : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
+```
 
 The first is an evaluator for BC [[1]](#1), the second is an evaluator for
 BC- [[2]](#2), and the third is an evaluator for BC-_epsilon [[4]](#4).  Some of
 the evaluators are unable to evaluate all fragments; if the expression
-cannot be evaluated, the exception Types.TypeFailure is raised.
+cannot be evaluated, the exception `Types.TypeFailure` is raised.
 
 The evaluators are
 
-- LogspaceEvaluator: the logspace evaluator for BC- presented in [[3]](#3).
+- `LogspaceEvaluator`: the logspace evaluator for BC- presented in [[3]](#3).
 
-- LogspaceEvaluatorFunc: a more functional version for BC- and
+- `LogspaceEvaluatorFunc`: a more functional version for BC- and
   BC-_epsilon as presented in [[4]](#4).
 
-- LogspaceEvaluatorFunctional: a completely functional evaluator for
+- `LogspaceEvaluatorFunctional`: a completely functional evaluator for
   BC- and BC-_epsilon.
 
-- CBVEvaluator: a standard call-by-value evaluator for BC, BC-, and
+- `CBVEvaluator`: a standard call-by-value evaluator for BC, BC-, and
   BC-_epsilon.  This is intended for reference.
 
-Input to the evaluators are syntax trees of type Syntax.S and lists of
+Input to the evaluators are syntax trees of type `Syntax.S` and lists of
 integers with the normal and safe arguments.  Syntax trees are build
 using the following functions:
 
-   zero : Syntax.S
-   s0 : Syntax.S
-   s1 : Syntax.S
-   p : Syntax.S
-   c : Syntax.S
-   proj : int * int * int -> Syntax.S
-   scomp : Syntax.S * Syntax.S list * Syntax.S list -> Syntax.S
-   srec : Syntax.S * Syntax.S * Syntax.S -> S
-   
+```
+zero : Syntax.S
+s0 : Syntax.S
+s1 : Syntax.S
+p : Syntax.S
+c : Syntax.S
+proj : int * int * int -> Syntax.S
+scomp : Syntax.S * Syntax.S list * Syntax.S list -> Syntax.S
+srec : Syntax.S * Syntax.S * Syntax.S -> S
+```
+
 There are a number of predefined syntax trees available in the
-structure Examples.  In particular, applying Examples.test_suite to
+structure `Examples`.  In particular, applying `Examples.test_suite` to
 one of the evaluator functions tests the evaluator function on all the
-input in Examples; it precedes the line with !! if the output deviates
+input in `Examples`; it precedes the line with `!!` if the output deviates
 from the expected output.  Note however that due to the differences in
 the arguments available to the recursive function some of the examples
-will produce the wrong output (e.g., CBVEvaluator.eval_bc on
-Examples.minus gives the wrong result because Examples.minus is for
+will produce the wrong output (e.g., `CBVEvaluator.eval_bc` on
+`Examples.minus` gives the wrong result because `Examples.minus` is for
 linear recursion).
 
 There are a couple of points to notice about the of the logspace
@@ -106,7 +109,7 @@ implementations:
   bits.
 
 - it is instructive to try the logspace-evaluator on the non-linear
-  BC-function Examples.cbv_show.  It ends up looping infinitely
+  BC-function `Examples.cbv_show`.  It ends up looping infinitely
   because more than one bit of the recursive call is needed.
 
 Due to the restrictions on SML/NJ int type the evaluator is limited to
