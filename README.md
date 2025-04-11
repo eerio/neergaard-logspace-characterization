@@ -1,13 +1,24 @@
-BC Evaluator
-============
+# A functional language for logarithmic space
+This repository contains the original source code for the paper
+"A Functional Language for Logarithmic Space" [[5]](#5), along with
+small refreshments where they were needed, such as removing the dependency
+on obsolete `mosmake` build system, updating the author's contact information,
+changing running instructions to those working in 2025. We also preserve here
+the non-published historical technical reports, which contain a lot of useful,
+and otherwise unaccessible information.
 
+The below is the original README file with minor adjustments.
+The whole code obtained from the author is present as-is in the linear-bc-evaluator.tgz file
+in this repository.
+
+## BC Evaluator
 This package contains an evaluator for the function algebra BC for
-PTIME introduced by Bellantoni and Cook [1].  It furthermore contains
+PTIME introduced by Bellantoni and Cook [[1]](#1).  It furthermore contains
 an evaluator running in logspace for the linear fragment BC- of BC as
-introduced by Ong and Murawski [2] and the linear fragment BC-_epsilon
-as introduced by M�ller Neergaard [4].  The evaluator is described by
-M�ller Neergaard and Mairson [3, 4].  It is intended to provide a proof
-of concept on top of the proof given in [3,4].
+introduced by Ong and Murawski [[2]](#2) and the linear fragment BC-_epsilon
+as introduced by Møller Neergaard [[4]](#4).  The evaluator is described by
+Møller Neergaard and Mairson [[3](#3), [4](#4)].  It is intended to provide a proof
+of concept on top of the proof given in [[3](#3), [4](#4)].
 
 Just run sudo apt instal smlnj, will install newer version than 110.0.7,
 but still pretty old (from 2022). But it's probably good enough.
@@ -22,7 +33,6 @@ issue the command to run the compilation manager:
     CM.make "sources.cm";
     Examples.test_suite CBVEvaluator.eval_bc ;
 
-
 The evaluator package consists of four evaluators which all adhere to
 the signature given in Evaluator-sig.sml.  That means that they
 contain the following functions:
@@ -31,17 +41,17 @@ contain the following functions:
    eval_bcm : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
    eval_bcmeps : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
 
-The first is an evaluator for BC [1], the second is an evaluator for
-BC- [2], and the third is an evaluator for BC-_epsilon [4].  Some of
+The first is an evaluator for BC [[1]](#1), the second is an evaluator for
+BC- [[2]](#2), and the third is an evaluator for BC-_epsilon [[4]](#4).  Some of
 the evaluators are unable to evaluate all fragments; if the expression
 cannot be evaluated, the exception Types.TypeFailure is raised.
 
 The evaluators are
 
-- LogspaceEvaluator: the logspace evaluator for BC- presented in [3].
+- LogspaceEvaluator: the logspace evaluator for BC- presented in [[3]](#3).
 
 - LogspaceEvaluatorFunc: a more functional version for BC- and
-  BC-_epsilon as presented in [4].
+  BC-_epsilon as presented in [[4]](#4).
 
 - LogspaceEvaluatorFunctional: a completely functional evaluator for
   BC- and BC-_epsilon.
@@ -75,7 +85,7 @@ linear recursion).
 There are a couple of points to notice about the of the logspace
 implementations:
 
-- the definition of BC- in [2] explicitly splits the safe arguments of
+- the definition of BC- in [[2]](#2) explicitly splits the safe arguments of
   safe composition.  We use the standard syntax for BC and just check
   that the arguments can be split affinely.
 
@@ -99,31 +109,31 @@ Due to the restrictions on SML/NJ int type the evaluator is limited to
 16-bit numbers.
 
 If you have any questions or comments, please contact
-peter@mollerneergaard.net
+peter (at) mollerneergaard (dot) net
 
-[1] S. Bellantoni and S. Cook. A new recursion-theoretic
+<a id="1">[1]</a>
+S. Bellantoni and S. Cook. A new recursion-theoretic
 characterization of the polytime functions. Computational Complexity,
 2:97--110, 1992.
 
-[2] A. S. Murawski and C.-H. L. Ong. Can safe recursion be interpreted
+<a id="1">[2]</a> A. S. Murawski and C.-H. L. Ong. Can safe recursion be interpreted
 in light logic? In 2nd International Workshop on Implicit
 Computational Complexity, June 2000.
 
-[3] P. M�ller Neergaard and H. G. Mairson.  How Light is Safe
+<a id="1">[3]</a> P. Møller Neergaard and H. G. Mairson.  How Light is Safe
 Recursion?  Translations Between Logics of Polynomial Time.
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
-[4] P M�ller Neergaard. BC-epsilon: A recursion-theoretic
+<a id="1">[4]</a> P. Møller Neergaard. BC-epsilon: A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
 http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
 https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
 
-
-Author's notes:
+Author's historical note:
 [03/11/22] I have started implemented a srec_k constructor which
   extends BC- such that the recursion scheme maintains a fixed k-bit
   register.  It works in CBV-evaluator, but I have not continued into
