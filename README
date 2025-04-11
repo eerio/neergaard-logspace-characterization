@@ -1,5 +1,3 @@
-						-*- text-mode -*-
-
 BC Evaluator
 ============
 
@@ -124,3 +122,13 @@ Recursion?  Translations Between Logics of Polynomial Time.
 [4] P M�ller Neergaard. BC-epsilon: A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
+
+Author's notes:
+[03/11/22] I have started implemented a srec_k constructor which
+  extends BC- such that the recursion scheme maintains a fixed k-bit
+  register.  It works in CBV-evaluator, but I have not continued into
+  the Logspace-evaluator for lack of appropriate syntax.  It should be
+  implementable even there, but it is of no use for a TM simulation
+  since we cannot communicate between that and a representation of the
+  tape.
+
