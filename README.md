@@ -119,29 +119,30 @@ If you have any questions or comments, please contact
 peter (at) mollerneergaard (dot) net
 
 <a id="1">[1]</a>
-S. Bellantoni and S. Cook. A new recursion-theoretic
-characterization of the polytime functions. Computational Complexity,
-2:97--110, 1992.
+Bellantoni, S., Cook, S. A new recursion-theoretic characterization of the polytime functions. Comput Complexity 2, 97–110 (1992). 
+- source: https://doi.org/10.1007/BF01201998
+- mirror: https://www.cs.toronto.edu/~sacook/homepage/ptime.pdf
 
 <a id="2">[2]</a> A. S. Murawski and C.-H. L. Ong. Can safe recursion be interpreted
 in light logic? In 2nd International Workshop on Implicit
 Computational Complexity, June 2000.
+- can't find source, but here's a related paper: https://www.sciencedirect.com/science/article/pii/S030439750300522X/pdf?md5=cc7da992d6c40e82c4578555b95bea6c&pid=1-s2.0-S030439750300522X-main.pdf&_valck=1 
 
 <a id="3">[3]</a> P. Møller Neergaard and H. G. Mairson.  How Light is Safe
 Recursion?  Translations Between Logics of Polynomial Time.
-https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
-http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
-https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
+- source: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
+- mirror: http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
+- mirror: https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
 <a id="4">[4]</a> P. Møller Neergaard. $\text{BC}^-_\varepsilon$ : A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
-https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
-http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
-https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
+- source: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
+- mirror: http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
+- mirror: https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
 
 <a id="5">[5]</a> Neergaard, P.M. (2004). A Functional Language for Logarithmic Space. In: Chin, WN. (eds) Programming Languages and Systems. APLAS 2004. Lecture Notes in Computer Science, vol 3302. Springer, Berlin, Heidelberg.
-https://doi.org/10.1007/978-3-540-30477-7_21
+- source: https://doi.org/10.1007/978-3-540-30477-7_21
 
 ### Author's historical notes:
 [03/11/22] I have started implemented a srec_k constructor which
