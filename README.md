@@ -20,18 +20,22 @@ as introduced by Møller Neergaard [[4]](#4).  The evaluator is described by
 Møller Neergaard and Mairson [[3](#3), [4](#4)].  It is intended to provide a proof
 of concept on top of the proof given in [[3](#3), [4](#4)].
 
-Just run sudo apt instal smlnj, will install newer version than 110.0.7,
-but still pretty old (from 2022). But it's probably good enough.
-Also, sudo apt install rlwrap and run smlnj as `rlwrap sml` to use arrows
-
 The evaluator is written in SML/NJ (Version 110.0.7) and has been
 tested under GNU/Linux.  The interpreter is provided in several source
 files and are easiest compiled using the SML/NJ's Compilation Manager:
-Start the sml interpreter in the directory of the source files.  Then
-issue the command to run the compilation manager:
 
-    CM.make "sources.cm";
-    Examples.test_suite CBVEvaluator.eval_bc ;
+Enter the directory of the source files. Then:
+```
+# This will install a version which is neither new (at the time of writing, it's from 2022) nor
+# matching the version which had been used by Peter Moller Neergaard. But it seems to work well
+$ sudo apt install smlnj rlwrap
+# rlwrap to be able to use arrows
+$ rlwrap sml
+Standard ML of New Jersey v110.79 [built: Mon Apr 22 10:14:55 2024]
+- CM.make "sources.cm";
+[...]
+- Examples.test_suite CBVEvaluator.eval_bc;
+```
 
 The evaluator package consists of four evaluators which all adhere to
 the signature given in Evaluator-sig.sml.  That means that they
@@ -135,9 +139,6 @@ https://github.com/eerio/neergaard-logspace-characterization/blob/main/Neergaard
 
 <a id="5">[5]</a> Neergaard, P.M. (2004). A Functional Language for Logarithmic Space. In: Chin, WN. (eds) Programming Languages and Systems. APLAS 2004. Lecture Notes in Computer Science, vol 3302. Springer, Berlin, Heidelberg.
 https://doi.org/10.1007/978-3-540-30477-7_21
-
-
-
 
 ### Author's historical notes:
 [03/11/22] I have started implemented a srec_k constructor which
