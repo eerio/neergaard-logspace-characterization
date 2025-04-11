@@ -98,15 +98,8 @@ implementations:
 Due to the restrictions on SML/NJ int type the evaluator is limited to
 16-bit numbers.
 
-If you have any questions or comments, please contact 
-
-   Peter M�ller Neergaard 
-   Mitchom School of Computer Science
-   Brandeis University
-   Waltham, MA 02454
-
-   e-mail: turtle@achilles.linearity.org
-
+If you have any questions or comments, please contact
+peter@mollerneergaard.net
 
 [1] S. Bellantoni and S. Cook. A new recursion-theoretic
 characterization of the polytime functions. Computational Complexity,
