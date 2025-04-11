@@ -1,7 +1,6 @@
 # A Functional Language for Logarithmic Space
 
-This repository contains the original source code from the paper
-"A Functional Language for Logarithmic Space" [[5]](#5), with some modern updates:
+This repository contains the source code for the paper "A Functional Language for Logarithmic Space" [[5]](#5), provided by the original author, Peter Møller Neergaard, and modernized for easier use:
 - Removed dependencies on the obsolete `mosmake` build system
 - Updated the author's contact information
 - Revised running instructions to work in 2025
