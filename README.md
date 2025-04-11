@@ -11,11 +11,11 @@ The below is the original README file with minor adjustments.
 The whole code obtained from the author is present as-is in the linear-bc-evaluator.tgz file
 in this repository.
 
-## BC Evaluator
-This package contains an evaluator for the function algebra BC for
+## $\text{BC}$ Evaluator
+This package contains an evaluator for the function algebra $\text{BC}$ for
 PTIME introduced by Bellantoni and Cook [[1]](#1).  It furthermore contains
-an evaluator running in logspace for the linear fragment $BC^-$ of BC as
-introduced by Ong and Murawski [[2]](#2) and the linear fragment $BC^-_\varepsilon$
+an evaluator running in logspace for the linear fragment $\text{BC}^-$ of $\text{BC}$ as
+introduced by Ong and Murawski [[2]](#2) and the linear fragment $\text{BC}^-_\varepsilon$
 as introduced by Møller Neergaard [[4]](#4).  The evaluator is described by
 Møller Neergaard and Mairson [[3](#3), [4](#4)].  It is intended to provide a proof
 of concept on top of the proof given in [[3](#3), [4](#4)].
@@ -46,23 +46,23 @@ eval_bcm : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
 eval_bcmeps : 'a Syntax.AS -> Numbers.int list -> Numbers.int list -> Numbers.int
 ```
 
-The first is an evaluator for BC [[1]](#1), the second is an evaluator for
-$BC^-$ [[2]](#2), and the third is an evaluator for $BC^-_\varepsilon$ [[4]](#4).  Some of
+The first is an evaluator for $\text{BC}$ [[1]](#1), the second is an evaluator for
+$\text{BC}^-$ [[2]](#2), and the third is an evaluator for $\text{BC}^-_\varepsilon$ [[4]](#4).  Some of
 the evaluators are unable to evaluate all fragments; if the expression
 cannot be evaluated, the exception `Types.TypeFailure` is raised.
 
 The evaluators are
 
-- `LogspaceEvaluator`: the logspace evaluator for $BC^-$ presented in [[3]](#3).
+- `LogspaceEvaluator`: the logspace evaluator for $\text{BC}^-$ presented in [[3]](#3).
 
-- `LogspaceEvaluatorFunc`: a more functional version for $BC^-$ and
-  $BC^-_\varepsilon$ as presented in [[4]](#4).
+- `LogspaceEvaluatorFunc`: a more functional version for $\text{BC}^-$ and
+  $\text{BC}^-_\varepsilon$ as presented in [[4]](#4).
 
 - `LogspaceEvaluatorFunctional`: a completely functional evaluator for
-  $BC^-$ and $BC^-_\varepsilon$.
+  $\text{BC}^-$ and $\text{BC}^-_\varepsilon$.
 
-- `CBVEvaluator`: a standard call-by-value evaluator for BC, $BC^-$, and
-  $BC^-_\varepsilon$.  This is intended for reference.
+- `CBVEvaluator`: a standard call-by-value evaluator for $\text{BC}$, $\text{BC}^-$, and
+  $\text{BC}^-_\varepsilon$.  This is intended for reference.
 
 Input to the evaluators are syntax trees of type `Syntax.S` and lists of
 integers with the normal and safe arguments.  Syntax trees are build
@@ -92,8 +92,8 @@ linear recursion).
 There are a couple of points to notice about the of the logspace
 implementations:
 
-- the definition of $BC^-$ in [[2]](#2) explicitly splits the safe arguments of
-  safe composition.  We use the standard syntax for BC and just check
+- the definition of $\text{BC}^-$ in [[2]](#2) explicitly splits the safe arguments of
+  safe composition.  We use the standard syntax for $\text{BC}$ and just check
   that the arguments can be split affinely.
 
 - we cheat slightly in the implementation: We evaluate the bits from
@@ -109,7 +109,7 @@ implementations:
   bits.
 
 - it is instructive to try the logspace-evaluator on the non-linear
-  $BC^-$function `Examples.cbv_show`.  It ends up looping infinitely
+  $\text{BC}^-$ function `Examples.cbv_show`.  It ends up looping infinitely
   because more than one bit of the recursive call is needed.
 
 Due to the restrictions on SML/NJ int type the evaluator is limited to
@@ -133,7 +133,7 @@ https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f4
 http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
-<a id="4">[4]</a> P. Møller Neergaard. $BC^-$epsilon: A recursion-theoretic
+<a id="4">[4]</a> P. Møller Neergaard. $\text{BC}^-_\varepsilon$ : A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
@@ -145,7 +145,7 @@ https://doi.org/10.1007/978-3-540-30477-7_21
 
 ### Author's historical notes:
 [03/11/22] I have started implemented a srec_k constructor which
-  extends $BC^-$ such that the recursion scheme maintains a fixed k-bit
+  extends $\text{BC}^-$ such that the recursion scheme maintains a fixed k-bit
   register.  It works in CBV-evaluator, but I have not continued into
   the Logspace-evaluator for lack of appropriate syntax.  It should be
   implementable even there, but it is of no use for a TM simulation
