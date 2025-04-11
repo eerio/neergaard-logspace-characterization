@@ -116,24 +116,30 @@ S. Bellantoni and S. Cook. A new recursion-theoretic
 characterization of the polytime functions. Computational Complexity,
 2:97--110, 1992.
 
-<a id="1">[2]</a> A. S. Murawski and C.-H. L. Ong. Can safe recursion be interpreted
+<a id="2">[2]</a> A. S. Murawski and C.-H. L. Ong. Can safe recursion be interpreted
 in light logic? In 2nd International Workshop on Implicit
 Computational Complexity, June 2000.
 
-<a id="1">[3]</a> P. Møller Neergaard and H. G. Mairson.  How Light is Safe
+<a id="3">[3]</a> P. Møller Neergaard and H. G. Mairson.  How Light is Safe
 Recursion?  Translations Between Logics of Polynomial Time.
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
-<a id="1">[4]</a> P. Møller Neergaard. BC-epsilon: A recursion-theoretic
+<a id="4">[4]</a> P. Møller Neergaard. BC-epsilon: A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
 http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
 https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
 
-Author's historical note:
+<a id="5">[5]</a> Neergaard, P.M. (2004). A Functional Language for Logarithmic Space. In: Chin, WN. (eds) Programming Languages and Systems. APLAS 2004. Lecture Notes in Computer Science, vol 3302. Springer, Berlin, Heidelberg.
+https://doi.org/10.1007/978-3-540-30477-7_21
+
+
+
+
+### Author's historical notes:
 [03/11/22] I have started implemented a srec_k constructor which
   extends BC- such that the recursion scheme maintains a fixed k-bit
   register.  It works in CBV-evaluator, but I have not continued into
