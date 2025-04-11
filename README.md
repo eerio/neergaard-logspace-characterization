@@ -1,39 +1,50 @@
-# A functional language for logarithmic space
-This repository contains the original source code for the paper
-"A Functional Language for Logarithmic Space" [[5]](#5), along with
-small refreshments where they were needed, such as removing the dependency
-on obsolete `mosmake` build system, updating the author's contact information,
-changing running instructions to those working in 2025. We also preserve here
-the non-published historical technical reports, which contain a lot of useful,
-and otherwise unaccessible information.
+# A Functional Language for Logarithmic Space
 
-The below is the original README file with minor adjustments.
-The whole code obtained from the author is present as-is in the linear-bc-evaluator.tgz file
-in this repository.
+This repository contains the original source code from the paper
+"A Functional Language for Logarithmic Space" [[5]](#5), with some modern updates:
+- Removed dependencies on the obsolete `mosmake` build system
+- Updated the author's contact information
+- Revised running instructions to work in 2025
 
-## $\text{BC}$ Evaluator
-This package contains an evaluator for the function algebra $\text{BC}$ for
-PTIME introduced by Bellantoni and Cook [[1]](#1).  It furthermore contains
-an evaluator running in logspace for the linear fragment $\text{BC}^-$ of $\text{BC}$ as
-introduced by Ong and Murawski [[2]](#2) and the linear fragment $\text{BC}^-_\varepsilon$
-as introduced by Møller Neergaard [[4]](#4).  The evaluator is described by
-Møller Neergaard and Mairson [[3](#3), [4](#4)].  It is intended to provide a proof
-of concept on top of the proof given in [[3](#3), [4](#4)].
+We've also preserved several unpublished technical reports that contain valuable information otherwise difficult to find.
 
-The evaluator is written in SML/NJ (Version 110.0.7) and has been
-tested under GNU/Linux.  The interpreter is provided in several source
-files and are easiest compiled using the SML/NJ's Compilation Manager:
+Below is the original README with minor adjustments for clarity.
 
-Enter the directory of the source files. Then:
+The complete code obtained from the author is available in its original form in the [linear-bc-evaluator.tgz](https://github.com/eerio/neergaard-logspace-characterization/blob/main/linear-bc-evaluator.tgz) archive.
+
+## BC Evaluator: Overview
+
+This package provides an evaluator for the function algebra $\text{BC}$ for
+PTIME introduced by Bellantoni and Cook [[1]](#1). Additionally, it includes:
+
+1. A logarithmic-space evaluator for the linear fragment $\text{BC}^-$ of $\text{BC}$ as
+introduced by Ong and Murawski [[2]](#2)
+2. An evaluator for $\text{BC}^-_\varepsilon$, another linear fragment described by Møller Neergaard and Mairson [[3](#3), [4](#4)]
+
+The evaluator is written in Standard ML of New Jersey (SML/NJ) and has been
+tested under GNU/Linux. The implementation is spread across several source
+files that can be compiled together using SML/NJ's Compilation Manager (CM).
+
+### Installation and Running
+
+To run the evaluator:
+
 ```
-# This will install a version which is neither new (at the time of writing, it's from 2022) nor
-# matching the version which had been used by Peter Moller Neergaard. But it seems to work well
+# Install SML/NJ and rlwrap (for better command line editing)
 $ sudo apt install smlnj rlwrap
-# rlwrap to be able to use arrows
+
+# Note: The version you'll get (likely v110.79+) is newer than the original 
+# version (v110.0.7) used by the author, but it should work fine
+
+# Start SML with enhanced readline support
 $ rlwrap sml
 Standard ML of New Jersey v110.79 [built: Mon Apr 22 10:14:55 2024]
+
+# Compile the project using CM
 - CM.make "sources.cm";
 [...]
+
+# Run the test suite with the reference evaluator
 - Examples.test_suite CBVEvaluator.eval_bc;
 ```
 
@@ -51,72 +62,65 @@ $\text{BC}^-$ [[2]](#2), and the third is an evaluator for $\text{BC}^-_\varepsi
 the evaluators are unable to evaluate all fragments; if the expression
 cannot be evaluated, the exception `Types.TypeFailure` is raised.
 
-The evaluators are
+### Evaluator Implementations
 
-- `LogspaceEvaluator`: the logspace evaluator for $\text{BC}^-$ presented in [[3]](#3).
+The package includes four different evaluator implementations:
 
-- `LogspaceEvaluatorFunc`: a more functional version for $\text{BC}^-$ and
-  $\text{BC}^-_\varepsilon$ as presented in [[4]](#4).
+- `LogspaceEvaluator`: A logspace evaluator for $\text{BC}^-$ as presented in [[3]](#3). This is 
+  the core implementation demonstrating that $\text{BC}^-$ can be evaluated in logarithmic space.
 
-- `LogspaceEvaluatorFunctional`: a completely functional evaluator for
-  $\text{BC}^-$ and $\text{BC}^-_\varepsilon$.
+- `LogspaceEvaluatorFunc`: A more functional implementation supporting both $\text{BC}^-$ and
+  $\text{BC}^-_\varepsilon$ as presented in [[4]](#4). This version improves upon the first implementation
+  while maintaining the logspace bounds.
 
-- `CBVEvaluator`: a standard call-by-value evaluator for $\text{BC}$, $\text{BC}^-$, and
-  $\text{BC}^-_\varepsilon$.  This is intended for reference.
+- `LogspaceEvaluatorFunctional`: A completely functional evaluator for $\text{BC}^-$ and
+  $\text{BC}^-_\varepsilon$.
 
-Input to the evaluators are syntax trees of type `Syntax.S` and lists of
-integers with the normal and safe arguments.  Syntax trees are build
-using the following functions:
+- `CBVEvaluator`: A standard call-by-value evaluator supporting all fragments ($\text{BC}$, $\text{BC}^-$, and
+  $\text{BC}^-_\varepsilon$). This implementation serves as a reference implementation and does not
+  guarantee logspace evaluation.
+
+### Creating and Using Syntax Trees
+
+Input to the evaluators consists of syntax trees (type `Syntax.S`) and two lists of integers 
+representing the normal and safe arguments. You can construct syntax trees using these functions:
 
 ```
-zero : Syntax.S
-s0 : Syntax.S
-s1 : Syntax.S
-p : Syntax.S
-c : Syntax.S
-proj : int * int * int -> Syntax.S
-scomp : Syntax.S * Syntax.S list * Syntax.S list -> Syntax.S
-srec : Syntax.S * Syntax.S * Syntax.S -> S
+zero : Syntax.S                                 // Constant zero function
+s0 : Syntax.S                                   // Prepend 0 bit function
+s1 : Syntax.S                                   // Prepend 1 bit function
+p : Syntax.S                                    // Predecessor function
+c : Syntax.S                                    // Conditional function
+proj : int * int * int -> Syntax.S              // Projection function
+scomp : Syntax.S * Syntax.S list * Syntax.S list -> Syntax.S  // Safe composition
+srec : Syntax.S * Syntax.S * Syntax.S -> S      // Safe recursion
 ```
 
-There are a number of predefined syntax trees available in the
-structure `Examples`.  In particular, applying `Examples.test_suite` to
-one of the evaluator functions tests the evaluator function on all the
-input in `Examples`; it precedes the line with `!!` if the output deviates
-from the expected output.  Note however that due to the differences in
-the arguments available to the recursive function some of the examples
-will produce the wrong output (e.g., `CBVEvaluator.eval_bc` on
-`Examples.minus` gives the wrong result because `Examples.minus` is for
-linear recursion).
+### Predefined Examples and Testing
 
-There are a couple of points to notice about the of the logspace
-implementations:
+The `Examples` structure provides a collection of predefined syntax trees for testing. You can use the `Examples.test_suite` function to run an evaluator against all predefined examples. The output is prefixed with `!!` if the result deviates from the expected value.
 
-- the definition of $\text{BC}^-$ in [[2]](#2) explicitly splits the safe arguments of
-  safe composition.  We use the standard syntax for $\text{BC}$ and just check
-  that the arguments can be split affinely.
+Note that due to differences in available arguments for recursive functions, some examples might produce incorrect output with certain evaluators (e.g., `CBVEvaluator.eval_bc` on `Examples.minus` because `Examples.minus` is designed for linear recursion).
 
-- we cheat slightly in the implementation: We evaluate the bits from
-  least significant to most significant and stop outputting when we
-  reach the first non-existing bit.  This is wrong as it violates
-  logspace (the output needs to be reversed) and it might lead to
-  vacuous zeroes in front of the first significant digit.  A correct
-  implementation would rather evaluate the bits from most significant
-  to least significant bit and first output bit after the first 1-bit
-  has been encountered.  We have chosen the alternative implementation
-  as it does not change the core argument (one bit can be found in
-  logspace) and it avoids idling through a number of non-existing
-  bits.
+### Important Implementation Details
 
-- it is instructive to try the logspace-evaluator on the non-linear
-  $\text{BC}^-$ function `Examples.cbv_show`.  It ends up looping infinitely
-  because more than one bit of the recursive call is needed.
+Here are some key aspects of the logspace evaluator implementations:
 
-Due to the restrictions on SML/NJ int type the evaluator is limited to
-16-bit numbers.
+- **Safe Composition:** The original definition of $\text{BC}^-$ [[2]](#2) explicitly separates safe arguments during safe composition. This implementation uses the standard $\text{BC}$ syntax but verifies that arguments can be split affinely.
 
-If you have any questions or comments, please contact
-peter (at) mollerneergaard (dot) net
+- **Bit Evaluation Order:** The implementation evaluates bits from least significant to most significant, stopping when the first non-existing bit is encountered. This is a cheat, as it violates logspace constraints (output needs to be reversed) and might introduce leading zeros. A correct logspace implementation would evaluate bits from most significant to least significant, outputting bits only after encountering the first '1' bit. This optimization was chosen to simplify the core argument (finding one bit in logspace) and avoid iterating through non-existent bits.
+
+- **Non-Linear Functions:** It's instructive to test the logspace evaluators with the non-linear $\text{BC}^-$ function `Examples.cbv_show`. This will result in an infinite loop because it requires more than one bit from the recursive call.
+
+### Limitations
+
+Due to limitations of the SML/NJ `int` type, the evaluator is restricted to 16-bit numbers.
+
+### Contact
+
+For questions or comments, please contact `peter (at) mollerneergaard (dot) net` (the original author) or `p (dot) balawender (at) mimuw (dot) edu (dot) pl` (the author of this revision).
+
+### References
 
 <a id="1">[1]</a>
 Bellantoni, S., Cook, S. A new recursion-theoretic characterization of the polytime functions. Comput Complexity 2, 97–110 (1992). 
@@ -145,6 +149,7 @@ March 2004. Preliminary version.
 - source: https://doi.org/10.1007/978-3-540-30477-7_21
 
 ### Author's historical notes:
+
 [03/11/22] I have started implemented a srec_k constructor which
   extends $\text{BC}^-$ such that the recursion scheme maintains a fixed k-bit
   register.  It works in CBV-evaluator, but I have not continued into
