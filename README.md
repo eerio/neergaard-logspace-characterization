@@ -118,10 +118,17 @@ Computational Complexity, June 2000.
 
 [3] P. M�ller Neergaard and H. G. Mairson.  How Light is Safe
 Recursion?  Translations Between Logics of Polynomial Time.
+https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
+http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
+https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
 [4] P M�ller Neergaard. BC-epsilon: A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
+https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
+http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
+https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
+
 
 Author's notes:
 [03/11/22] I have started implemented a srec_k constructor which
@@ -131,4 +138,3 @@ Author's notes:
   implementable even there, but it is of no use for a TM simulation
   since we cannot communicate between that and a representation of the
   tape.
-
