@@ -135,14 +135,12 @@ Computational Complexity, June 2000.
 Recursion?  Translations Between Logics of Polynomial Time.
 - source: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
 - mirror: http://web.archive.org/web/20250411115047/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a1670570dbe8ff1f464a826db9b79e0054108c35
-- mirror: https://github.com/eerio/neergaard-logspace-characterization/blob/main/HowLightIsSafeRecursion.pdf
 
 <a id="4">[4]</a> P. Møller Neergaard. $\text{BC}^-_\varepsilon$ : A recursion-theoretic
 characterization of logspace. Technical report, Brandeis University,
 March 2004. Preliminary version.
 - source: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
 - mirror: http://web.archive.org/web/20250411114452/https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d00d19870bb43abb4b0098e382ddc7f54d2ddf48
-- mirror: https://github.com/eerio/neergaard-logspace-characterization/blob/main/NeergaardRecursionTheoreticCharacterizationOfLogspace.pdf
 
 <a id="5">[5]</a> Neergaard, P.M. (2004). A Functional Language for Logarithmic Space. In: Chin, WN. (eds) Programming Languages and Systems. APLAS 2004. Lecture Notes in Computer Science, vol 3302. Springer, Berlin, Heidelberg.
 - source: https://doi.org/10.1007/978-3-540-30477-7_21
